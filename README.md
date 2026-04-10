@@ -28,13 +28,13 @@ VirtualBox to run multiple virtual machines in an isolated network.
 
 
 **Network:** All VMs run on an isolated VirtualBox NAT Network 
-(`192.168.56.0/24`). Nothing touches the real home network.
+(`192.168.10.0/24`). Nothing touches the real home network.
 
 | VM | IP Address |
 |---|---|
-| Splunk Server (Ubuntu) | 192.168.56.10 |
-| Windows 10 Target | 192.168.56.XX |
-| Kali Linux Attacker | 192.168.56.XX |
+| Splunk Server (Ubuntu) | 192.168.10.10 |
+| Windows 10 Target | 192.168.10.20 |
+| Kali Linux Attacker | 192.168.10.30 |
 
 ---
 
@@ -78,4 +78,14 @@ VirtualBox to run multiple virtual machines in an isolated network.
 <img width="1287" height="806" alt="2" src="https://github.com/user-attachments/assets/a829f80d-a04c-4739-b82d-b10ff910f0a6" />
 
 ---
+## Tools Used
 
+- [Splunk Enterprise](https://www.splunk.com/en_us/products/splunk-enterprise.html)
+- [Sysmon](https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon)
+- [sysmon-modular config](https://github.com/olafhartong/sysmon-modular)
+- [Kali Linux](https://www.kali.org/)
+- [VirtualBox](https://www.virtualbox.org/)
+- [Nmap](https://nmap.org/)
+- [Hydra](https://github.com/vanhauser-thc/thc-hydra)
+
+---
