@@ -26,12 +26,12 @@ Splunk detected the attack via repeated EventCode 4625
 
 | Time | Event |
 |---|---|
-| [HH:MM] | Nmap port scan detected from Kali (reconnaissance phase) |
-| [HH:MM] | First failed login attempt detected (EventCode 4625) |
-| [HH:MM] | 5th failed attempt — Splunk alert triggered |
-| [HH:MM] | Attack stopped — 847 total attempts logged |
-| [HH:MM] | Investigation began in Splunk |
-| [HH:MM] | Incident documented and closed |
+| [10:13] | Nmap port scan detected from Kali (reconnaissance phase) |
+| [10:17] | First failed login attempt detected (EventCode 4625) |
+| [10:19] | 5th failed attempt — Splunk alert triggered |
+| [10:39] | Attack stopped — 847 total attempts logged |
+| [11:00] | Investigation began in Splunk |
+| [11:17] | Incident documented and closed |
 
 ---
 
