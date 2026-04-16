@@ -136,3 +136,14 @@ nmap -sS -p- 192.168.10.20
 
 ### Step 8 — Use the SPL Queries
 See the `/detection` folder for all Splunk queries used in this lab.
+
+---
+
+## Future Improvements
+
+- [ ] Integrate **Sigma rules** for cross-platform detection rule portability
+- [ ] Add **TheHive** for structured incident case management
+- [ ] Try **Elastic SIEM** as an alternative to Splunk
+- [ ] Simulate more attack techniques: phishing, lateral movement, C2 beaconing
+- [ ] Set up **Splunk SOAR** to automate basic response playbooks
+- [ ] Forward Linux (Ubuntu) logs to Splunk for broader visibility
