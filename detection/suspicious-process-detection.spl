@@ -1,0 +1,4 @@
+index=windows source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1
+| eval cmdline=lower(CommandLine)
+| search cmdline IN ("*powershell*", "*cmd.exe*", "*net user*", "*whoami*")
+| table _time, Image, CommandLine, ParentImage, host
