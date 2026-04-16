@@ -1,0 +1,3 @@
+index=windows EventCode=4720
+| table _time, user, src_ip, host, Account_Name
+| sort -_time
