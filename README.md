@@ -89,3 +89,50 @@ VirtualBox to run multiple virtual machines in an isolated network.
 - [Hydra](https://github.com/vanhauser-thc/thc-hydra)
 
 ---
+
+## How to Reproduce This Lab
+
+### Step 1 — Install VirtualBox
+Download and install [VirtualBox](https://www.virtualbox.org/) on your host machine.
+
+### Step 2 — Create a NAT Network
+- Open VirtualBox → Tools → Network → NAT Networks → Create
+- Name it `SOC-Lab`, set IP range to `192.168.10.0/24`
+
+### Step 3 — Set Up the VMs
+Download and install these three VMs, all connected to the `SOC-Lab` NAT network:
+- **Ubuntu Server 22.04** — assign static IP `192.168.10.10`
+- **Windows 10** — assign static IP `192.168.10.20`
+- **Kali Linux** — assign static IP `192.168.10.30`
+
+### Step 4 — Install Splunk on Ubuntu
+```bash
+wget -O splunk.deb "https://download.splunk.com/products/splunk/releases/9.1.0/linux/splunk-9.1.0-amd64.deb"
+sudo dpkg -i splunk.deb
+sudo /opt/splunk/bin/splunk start --accept-license
+```
+Access Splunk at: `http://192.168.10.10:8000`
+
+### Step 5 — Install Sysmon on Windows
+- Download [Sysmon](https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon) and the [sysmon-modular config](https://github.com/olafhartong/sysmon-modular)
+- Run in PowerShell as Admin:
+```powershell
+.\Sysmon64.exe -accepteula -i sysmonconfig.xml
+```
+
+### Step 6 — Install Splunk Universal Forwarder on Windows
+- Download from Splunk's website
+- During install, point it to your Splunk server: `192.168.10.10:9997`
+- Configure it to forward: Security, System, Application, and Sysmon logs
+
+### Step 7 — Run Attacks from Kali
+```bash
+# Brute force
+hydra -l admin -P /usr/share/wordlists/rockyou.txt 192.168.10.20 smb
+
+# Port scan
+nmap -sS -p- 192.168.10.20
+```
+
+### Step 8 — Use the SPL Queries
+See the `/detection` folder for all Splunk queries used in this lab.
