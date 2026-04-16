@@ -2,11 +2,11 @@
 
 | Field | Details |
 |---|---|
-| **Date** | [Date you ran the attack] |
+| **Date** | [11 April 2026] |
 | **Severity** | High |
 | **Status** | Resolved (Simulated) |
-| **Analyst** | [Your Name] |
-| **Affected Host** | Windows-10-Target (192.168.56.XX) |
+| **Analyst** | [Darsh Acharya] |
+| **Affected Host** | Windows-10-Target (192.168.10.20) |
 | **MITRE Technique** | T1110.001 — Brute Force: Password Guessing |
 
 ---
@@ -15,7 +15,7 @@
 
 A brute force credential attack was detected against the 
 Windows-10-Target machine. The attack originated from 
-192.168.56.XX (Kali-Attacker) and targeted the local 
+192.168.10.30 (Kali-Attacker) and targeted the local 
 Administrator account using an automated password list. 
 Splunk detected the attack via repeated EventCode 4625 
 (failed logon) events and triggered an automated alert.
@@ -45,7 +45,7 @@ index=windows EventCode=4625
 ```
 
 ### Findings
-- **Source IP:** 192.168.56.XX
+- **Source IP:** 192.168.10.20
 - **Target Account:** administrator
 - **Total Failed Attempts:** 847
 - **Duration:** ~3 minutes
@@ -61,7 +61,7 @@ index=windows EventCode=4625
 
 | Type | Value | Context |
 |---|---|---|
-| IP Address | 192.168.56.XX | Attacker source IP |
+| IP Address | 192.168.10.30 | Attacker source IP |
 | Username targeted | administrator | High-value account |
 | Tool signature | hydra | Detected in Sysmon process logs |
 
@@ -78,7 +78,7 @@ The attack was possible because:
 
 ## Containment Actions (What Would Happen in Real Environment)
 
-1. Block source IP `192.168.56.XX` at the firewall
+1. Block source IP `192.168.10.30` at the firewall
 2. Temporarily lock the `administrator` account
 3. Force password reset on all targeted accounts
 4. Implement account lockout policy (lock after 5 failures)
